@@ -1,16 +1,24 @@
-from flask import render_template, request, redirect, url_for, flash
-from app import app, db
-from app.models import Subscription
+from flask import Blueprint, render_template
+from .models import Event, Profile  # Make sure these are your actual model names
+from . import db  # Only if needed directly, not typically required if using models
+from .models import Alumni
+main = Blueprint('main', __name__)
 
-@app.route('/')
-def index():
+@main.route('/')
+def home():
     return render_template('index.html')
 
-@app.route('/subscribe', methods=['POST'])
-def subscribe():
-    email = request.form['email']
-    new_subscription = Subscription(email=email)
-    db.session.add(new_subscription)
-    db.session.commit()
-    flash('Subscription successful!!', 'success')
-    return redirect(url_for('index'))
+@main.route('/profile/<int:profile_id>')
+def profile(profile_id):
+    person = Profile.query.get_or_404(profile_id)
+    return render_template('profile.html', person=person)
+
+@main.route('/events')
+def events():
+    events = Event.query.all()
+    return render_template('events.html', events=events)
+
+@main.route('/alumni-directory')
+def alumni_directory():
+    alumni = Alumni.query.all()  # Assuming you have an Alumni model defined
+    return render_template('alumni-directory.html', alumni=alumni)

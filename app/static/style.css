@@ -1,0 +1,239 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Header styles with Navigation Menu */
+header {
+    background-color: teal;
+    color: white;
+    padding: 10px 20px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    margin-right: 20px;
+}
+
+nav {
+    flex-grow: 1;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-menu li {
+    margin-right: 20px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.nav-menu a:hover {
+    background-color: #4480FF;
+}
+
+.register-link {
+    background-color: #4480FF;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.register-link:hover {
+    background-color: #3366CC;
+}
+
+/* Main content wrapper for gallery and event calendar */
+.main-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Gallery Section */
+.gallery {
+    width: 66.6%; /* 2/3 of the width */
+    margin-right: 10px;
+}
+
+/* Carousel Image Styles */
+.carousel-slide img {
+    width: 100%; /* Make the image take up the full width of its container */
+    height: 500px; /* Set the carousel height to 500px */
+    object-fit:cover; /* Ensure the image covers the entire container without distortion */
+    display: none; /* Hide all images by default */
+}
+
+.carousel-slide img:first-child {
+    display: block; /* Display the first image by default */
+}
+
+/* Arrow Styles for Carousel Navigation */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%; /* Center the arrows vertically */
+    transform: translateY(-50%); /* Offset the arrows by 50% of their height to center them */
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    z-index: 10; /* Ensure arrows appear above other content */
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Ensure that carousel container has relative positioning */
+.carousel {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+}
+
+/* Set z-index of images to be below the arrows */
+.carousel-slide img {
+    z-index: 1;
+}
+
+.gallery .btn {
+    display: block;
+    margin-top: 10px;
+    background-color: #4480FF;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.gallery .btn:hover {
+    background-color: #3366CC;
+}
+
+/* Event Calendar Section */
+.event-calendar {
+    width: 33.3%; /* 1/3 of the width */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.event {
+    margin-bottom: 20px;
+}
+
+.event-calendar .btn {
+    display: block;
+    margin-top: 10px;
+    background-color: #4480FF;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.event-calendar .btn:hover {
+    background-color: #3366CC;
+}
+
+/* Newsfeed Section */
+.newsfeed {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.newsfeed .post {
+    margin-bottom: 20px;
+}
+
+.newsfeed .post-title {
+    font-size: 1.5em;
+    color: #115DFC;
+}
+
+.newsfeed .post-date {
+    color: #888;
+    font-size: 0.9em;
+}
+
+.newsfeed .btn {
+    background-color: #4480FF;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.newsfeed .btn:hover {
+    background-color: #3366CC;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .main-content-wrapper {
+        flex-direction: column;
+    }
+
+    .gallery, .event-calendar {
+        width: 100%;
+        margin-right: 0;
+    }
+}

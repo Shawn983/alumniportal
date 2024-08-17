@@ -1,23 +1,18 @@
 from flask import Flask
-from config import Config
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-import logging
+from .config import Config
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://default:kFfMWt6Zc1oX@ep-square-scene-a1p3btq7-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require'
+db = SQLAlchemy()
 
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-
-from app import routes, models
-
-#Setup console logging
-if not app.debug:
-    stream_handler = logging.StreamHandler()
-    stream_handler.setLevel(logging.INFO)
-    app.logger.addHandler(stream_handler)
-
-app.logger.setLevel(logging.INFO)
-app.logger.info('Flask App startup')
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
     
+    db.init_app(app)
+
+    with app.app_context():
+        from .routes import main  # Assuming 'main' is the blueprint in routes.py
+        app.register_blueprint(main)
+        db.create_all()  # Creates database tables from SQLAlchemy models if they don't exist
+
+    return app

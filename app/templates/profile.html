@@ -1,23 +1,25 @@
-<!-- templates/profile.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ person.name }}'s Profile</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>{{ person.name }}</h1>
-    <p>Email: {{ person.email }}</p>
-    <p>Career: {{ person.career }}</p>
-    <p>Contributions: {{ person.contributions }}</p>
-    <h2>Update Profile</h2>
-    <form action="{{ url_for('update_profile', alumni_id=person.id) }}" method="POST">
-        Name: <input type="text" name="name" value="{{ person.name }}"><br>
-        Email: <input type="email" name="email" value="{{ person.email }}"><br>
-        Career: <input type="text" name="career" value="{{ person.career }}"><br>
-        Contributions: <input type="text" name="contributions" value="{{ person.contributions }}"><br>
-        <input type="submit" value="Update">
-    </form>
+    <div class="popup">
+        <h1>{{ person.name }}</h1>
+        <p>Email: {{ person.email }}</p>
+        <p>Career: {{ person.career }}</p>
+        <p>Contributions: {{ person.contributions }}</p>
+        <h2>Update Profile</h2>
+        <form action="{{ url_for('update_profile', alumni_id=person.id) }}" method="POST">
+            Name: <input type="text" name="name" value="{{ person.name }}"><br>
+            Email: <input type="email" name="email" value="{{ person.email }}"><br>
+            Career: <input type="text" name="career" value="{{ person.career }}"><br>
+            Contributions: <input type="text" name="contributions" value="{{ person.contributions }}"><br>
+            <input type="submit" value="Update" class="btn submit">
+        </form>
+    </div>
 </body>
 </html>

@@ -1,7 +1,21 @@
-from datetime import datetime
-from app import db
+from . import db
 
-class Subscription(db.Model):
+class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    subscribed_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    title = db.Column(db.String(100), nullable=False)
+    date = db.Column(db.Date, nullable=False)
+    location = db.Column(db.String(100))
+
+class Profile(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    career = db.Column(db.String(100))
+    contributions = db.Column(db.String(255))
+
+class Alumni(db.Model):  # Assuming you need this for alumni-directory
+    id = db.Column(db.Integer, primary_key=True)
+    full_name = db.Column(db.String(255), nullable=False)
+    graduation_date = db.Column(db.Date, nullable=False)
+    class_number = db.Column(db.String(10))
+    open_to_collaboration = db.Column(db.Boolean, default=False)

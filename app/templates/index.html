@@ -1,18 +1,94 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Alumni Portal</title>
     <link rel="stylesheet" href="/static/style.css">
-    <title>Alumni Management</title>
 </head>
 <body>
-    <h1>Alumni Directory</h1>
-    <ul>
-        {% for person in alumni %}
-            <li><a href="{{ url_for('profile', alumni_id=person.id) }}">{{ person.name }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <!-- Header Section with Navigation Menu -->
+        <header>
+            <div class="header-content">
+                <h1>School Alumni Portal</h1>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/alumni-directory">Alumni Directory</a></li>
+                        <li><a href="/event-calendar">Event Calendar</a></li>
+                        <li><a href="/networking">Networking</a></li>
+                        <li><a href="/newsfeed">NewsFeed</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <a href="/register" class="register-link">Register New Alumni</a>
+        </header>
+
+        <!-- Main Content Wrapper -->
+        <div class="main-content-wrapper">
+            <!-- Gallery Section with Simple Carousel -->
+            <section class="gallery">
+                <h2>Photo Gallery</h2>
+                <div class="carousel">
+                    <div class="carousel-slide">
+                        <img src="/static/images/photo1.webp" alt="Event 1">
+                        <img src="/static/images/photo2.jpg" alt="Event 2">
+                        <img src="/static/images/photo3.jpeg" alt="Event 3">
+                        <img src="/static/images/schoollogo.png" alt="Event 4">
+                        <!-- Add more images as needed -->
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <a href="/gallery" class="btn">View Full Gallery</a>
+            </section>
+
+            <!-- Event Calendar Section -->
+            <section class="event-calendar">
+                <h2>Upcoming Events</h2>
+                <div class="event">
+                    <p>Event Title: Alumni Reunion 2024</p>
+                    <p>Date: May 15, 2024</p>
+                    <p>Location: Main Campus</p>
+                </div>
+                <div class="event">
+                    <p>Event Title: Annual Fundraiser</p>
+                    <p>Date: June 20, 2024</p>
+                    <p>Location: City Hall</p>
+                </div>
+                <a href="/events" class="btn">View All Events</a>
+            </section>
+        </div>
+
+        <!-- Newsfeed Section -->
+        <section class="newsfeed">
+            <h2>Latest News</h2>
+            <div class="post">
+                <h3 class="post-title">Post Title 1</h3>
+                <p class="post-date">Posted on: August 17, 2024</p>
+                <p class="post-content">This is a short snippet of the first newsfeed post...</p>
+            </div>
+            <div class="post">
+                <h3 class="post-title">Post Title 2</h3>
+                <p class="post-date">Posted on: August 16, 2024</p>
+                <p class="post-content">This is a short snippet of the second newsfeed post...</p>
+            </div>
+            <div class="post">
+                <h3 class="post-title">Post Title 3</h3>
+                <p class="post-date">Posted on: August 15, 2024</p>
+                <p class="post-content">This is a short snippet of the third newsfeed post...</p>
+            </div>
+            <a href="/newsfeed" class="btn">View All News</a>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2024 School Alumni Portal. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Link to the External JavaScript File -->
+    <script src="/static/js/carousel.js"></script>
 </body>
 </html>
