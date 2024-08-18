@@ -1,0 +1,1 @@
+This ASRJC Alumni Portal is a web application designed to facilitate communication, collaboration, and networking among alumni of ASRJC. This portal provides users with features like event management, a newsfeed, an alumni directory, and a profile management system. Alumni can register, log in, update their profiles, and manage collaboration requests through the portal.
