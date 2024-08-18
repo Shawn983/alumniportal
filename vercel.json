@@ -7,11 +7,9 @@
     ],
     "routes": [
         {
-            "src": "^/static/(.*)",
+            "src": "/static/(.*)",
             "dest": "/static/$1",
-            "headers": {
-                "cache-control": "public, max-age=31536000, immutable"
-            }
+            "continue": true
         },
         {
             "src": "/favicon.ico",
@@ -21,5 +19,8 @@
             "src": "/(.*)",
             "dest": "run.py"
         }
+    ],
+    "rewrites": [
+        { "source": "/static/(.*)", "destination": "/static/$1" }
     ]
 }
