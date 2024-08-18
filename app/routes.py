@@ -67,12 +67,12 @@ def profile():
     requests = CollaborationRequest.query.filter_by(requested_person_email=user.email).all()
     return render_template('profile.html', user=user, requests=requests)
 
-
 @main.route('/events')
 def events():
-    current_time = datetime.now()
+    current_time = datetime.now().date()  # Only use the date part
     upcoming_events = Event.query.filter(Event.event_date >= current_time).order_by(Event.event_date.asc()).all()
     return render_template('events.html', events=upcoming_events, current_time=current_time)
+
 
 @main.route('/alumni-directory')
 def alumni_directory():
