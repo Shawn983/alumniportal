@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASRJC Alumni Portal</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
@@ -33,7 +33,6 @@
                         <img src="/static/images/photo2.png" alt="Event 2">
                         <img src="/static/images/photo3.jpg" alt="Event 3">
                         <img src="/static/images/photo4.jpg" alt="Event 4">
-                        <!-- Add more images as needed -->
                     </div>
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -74,7 +73,6 @@
             <p>&copy; 2024 ASRJC Alumni Portal. All rights reserved.</p>
         </footer>
     </div>
-
-    <script src="/static/js/carousel.js"></script>
+    <script src="{{ url_for('static', filename='carousel.js') }}"></script>
 </body>
 </html>
