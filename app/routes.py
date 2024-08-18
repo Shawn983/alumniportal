@@ -67,6 +67,7 @@ def profile():
     requests = CollaborationRequest.query.filter_by(requested_person_email=user.email).all()
     return render_template('profile.html', user=user, requests=requests)
 
+
 @main.route('/events')
 def events():
     current_time = datetime.now()
