@@ -8,19 +8,15 @@
     "routes": [
         {
             "src": "/static/(.*)",
-            "dest": "/static/$1",
-            "continue": true
+            "dest": "/app/static/$1"
         },
         {
             "src": "/favicon.ico",
-            "dest": "/static/favicon.ico"
+            "dest": "/app/static/favicon.ico"
         },
         {
             "src": "/(.*)",
             "dest": "run.py"
         }
-    ],
-    "rewrites": [
-        { "source": "/static/(.*)", "destination": "/static/$1" }
     ]
 }
