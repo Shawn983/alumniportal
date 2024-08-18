@@ -2,24 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ person.name }}'s Profile</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="popup">
-        <h1>{{ person.name }}</h1>
-        <p>Email: {{ person.email }}</p>
-        <p>Career: {{ person.career }}</p>
-        <p>Contributions: {{ person.contributions }}</p>
-        <h2>Update Profile</h2>
-        <form action="{{ url_for('update_profile', alumni_id=person.id) }}" method="POST">
-            Name: <input type="text" name="name" value="{{ person.name }}"><br>
-            Email: <input type="email" name="email" value="{{ person.email }}"><br>
-            Career: <input type="text" name="career" value="{{ person.career }}"><br>
-            Contributions: <input type="text" name="contributions" value="{{ person.contributions }}"><br>
-            <input type="submit" value="Update" class="btn submit">
-        </form>
+    <div class="container">
+        <!-- Header Section with Navigation Menu -->
+        <header>
+            <div class="header-content">
+                <img src="/static/images/schoollogo.png" alt="ASRJC Logo" style="width: 75px; height: 100px;">                
+                <h1>ASRJC Alumni Portal</h1>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/alumni-directory">Alumni Directory</a></li>
+                        <li><a href="/events">Event Calendar</a></li>
+                        <li><a href="/newsfeed">NewsFeed</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <a href="/register-login" class="register-link">Register/Login</a>
+        </header>
+
+        <h1>User Profile</h1>
+        <div class="centered-form-container">
+            <form id="profileForm">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required>
+
+                <label for="graduationDate">Graduation Date:</label>
+                <p></p>
+                <input type="date" id="graduationDate" name="graduationDate" required>
+                <p></p>
+
+                <label for="classNumber">Class Number:</label>
+                <p></p>
+                <input type="text" id="classNumber" name="classNumber" required>
+
+                <label for="contributions">Contributions:</label>
+                <p></p>
+                <textarea id="contributions" name="contributions" required></textarea>
+                <p></p>
+
+                <label for="email">Email:</label>
+                <p></p>
+                <input type="email" id="email" name="email" required>
+                <p></p>
+
+                <label for="openToCollaboration">Open to Collaboration:</label>
+                <input type="checkbox" id="openToCollaboration" name="openToCollaboration">
+                <p></p>
+
+                <div class="center-button">
+                    <button type="submit">Update Profile</button>
+                </div>
+                </form>
+            </div>
+        <div class="center-change-password">
+            <button onclick="showChangePasswordForm()">Change Password</button>
+        </div>
+        <!-- Hidden form for changing the password -->
+        <div id="changePasswordForm" class="centered-form-container" style="display:none;">
+            <h2>Change Password</h2>
+            <form id="passwordForm">
+                <label for="currentPassword">Current Password:</label>
+                <input type="password" id="currentPassword" name="currentPassword" required>
+
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+
+                <label for="confirmNewPassword">Confirm New Password:</label>
+                <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+
+                <div style="text-align: center;">
+                    <button type="submit">Update Password</button>
+                    <button type="button" onclick="hideChangePasswordForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <!-- User's collaboration requests -->
+        <div id="collabRequests">
+            <h2>Collaboration Requests</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Requestor Name</th>
+                        <th>Contact Number</th>
+                        <th>Email</th>
+                        <th>Description</th>
+                        <th>Date of Request</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                    <tr>
+                        <td>{{ request.requestor_full_name }}</td>
+                        <td>{{ request.requestor_contact_number }}</td>
+                        <td>{{ request.requestor_email }}</td>
+                        <td>{{ request.description }}</td>
+                        <td>{{ request.date_of_request.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script src="/static/js/profile.js"></script>
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2024 ASRJC Alumni Portal. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register / Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+                <!-- Header Section with Navigation Menu -->
+                <header>
+                    <div class="header-content">
+                        <img src="/static/images/schoollogo.png" alt="ASRJC Logo" style="width: 75px; height: 100px;">                        
+                        <h1>ASRJC Alumni Portal</h1>
+                        <nav>
+                            <ul class="nav-menu">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/alumni-directory">Alumni Directory</a></li>
+                                <li><a href="/events">Event Calendar</a></li>
+                                <li><a href="/newsfeed">NewsFeed</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <a href="/register-login" class="register-link">Register/Login</a>
+                </header>
+        <h1>Welcome to the Alumni Portal</h1>
+        <div class="centered-form-container">
+            <form id="loginForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Login</button>
+                
+                <p>Not registered? <a href="#" onclick="showRegisterForm()">Register here</a></p>
+            </form>
+        </div>
+        <!-- Register Form -->
+        <form id="registerForm" style="display:none;">
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        
+            <label for="regEmail">Email:</label>
+            <input type="email" id="regEmail" name="email" required>
+        
+            <label for="regPassword">Password:</label>
+            <input type="password" id="regPassword" name="password" required>
+        
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        
+            <button type="submit">Register</button>
+            <button type="button" onclick="hideRegisterForm()">Cancel</button>
+        </form>
+        
+            <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2024 ASRJC Alumni Portal. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="/static/js/auth.js"></script>
+</body>
+</html>

@@ -2,11 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alumni Directory</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Alumni Directory</h1>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="/static/images/schoollogo.png" alt="ASRJC Logo" style="width: 75px; height: 100px;">                
+                <h1>ASRJC Alumni Portal</h1>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/alumni-directory">Alumni Directory</a></li>
+                        <li><a href="/events">Event Calendar</a></li>
+                        <li><a href="/newsfeed">NewsFeed</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <a href="/register-login" class="register-link">Register/Login</a>
+        </header>
+
+        <h2>Alumni Directory</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Graduation Date</th>
+                    <th>Class Number</th>
+                    <th>Contributions</th>
+                    <th>Open to Collaboration</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alum in alumni %}
+                <tr>
+                    <td>{{ alum.full_name }}</td>
+                    <td>{{ alum.graduation_date.strftime('%Y-%m-%d') if alum.graduation_date else 'N/A' }}</td>
+                    <td>{{ alum.class_number }}</td>
+                    <td>{{ alum.contributions }}</td>
+                    <td>{{ 'Yes' if alum.open_to_collaboration else 'No' }}</td>
+                    <td>
+                        {% if alum.open_to_collaboration %}
+                        <button onclick="showCollabForm('{{ alum.full_name }}', '{{ alum.email }}')">Collaborate</button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+            <div id="collabForm" style="display:none;">
+                <form onsubmit="submitRequest(event)">
+                    <label for="requestorName">Your Name:</label>
+                    <input type="text" id="requestorName" name="requestorName" required>
+                    
+                    <label for="requestorContactNumber">Your Contact Number:</label>
+                    <input type="text" id="requestorContactNumber" name="requestorContactNumber">
+            
+                    <label for="requestorEmail">Your Email:</label>
+                    <input type="email" id="requestorEmail" name="requestorEmail" required>
+                    
+                    <label for="description">Description of Collaboration:</label>
+                    <textarea id="description" name="description" required></textarea>
+            
+                    <input type="hidden" id="alumniName" name="alumniName">
+                    <input type="hidden" id="alumniEmail" name="alumniEmail">
+            
+                    <input type="submit" value="Submit Request">
+                </form>
+            </div>
+
+        <footer>
+            <p>&copy; 2024 ASRJC Alumni Portal. All rights reserved.</p>
+        </footer>  
+    </div>
+
+
+
+    <script src="/static/js/alumni-directory.js"></script>
 
 </body>
 </html>

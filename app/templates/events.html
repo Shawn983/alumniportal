@@ -1,4 +1,3 @@
-<!-- templates/events.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +7,39 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="popup">
-        <h1>Upcoming Events</h1>
-        <ul>
-            {% for event in events %}
-                <li>{{ event.title }} - {{ event.date }} at {{ event.location }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+    <div class="container">
+
+        <header>
+            <div class="header-content">
+                <img src="/static/images/schoollogo.png" alt="ASRJC Logo" style="width: 75px; height: 100px;">                
+                <h1>ASRJC Alumni Portal</h1>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/alumni-directory">Alumni Directory</a></li>
+                        <li><a href="/events">Event Calendar</a></li>
+                        <li><a href="/newsfeed">NewsFeed</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <a href="/register-login" class="register-link">Register/Login</a>            
+        </header>
+    <h1>Upcoming Events</h1>
+    <ul>
+        {% for event in events %}
+            {% if event.event_date >= current_time %}
+                <li>
+                    <h2>{{ event.title }}</h2>
+                    <p>Date: {{ event.event_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                    <p>Location: {{ event.location }}</p>
+                    <p>Description: {{ event.description }}</p>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+        <footer>
+            <p>&copy; 2024 ASRJC Alumni Portal. All rights reserved.</p>
+        </footer>
+    </div>   
 </body>
 </html>

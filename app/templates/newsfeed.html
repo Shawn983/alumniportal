@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsFeed</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section with Navigation Menu -->
+        <header>
+            <div class="header-content">
+                <img src="/static/images/schoollogo.png" alt="ASRJC Logo" style="width: 75px; height: 100px;">                
+                <h1>ASRJC Alumni Portal</h1>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/alumni-directory">Alumni Directory</a></li>
+                        <li><a href="/events">Event Calendar</a></li>
+                        <li><a href="/newsfeed" class="active">NewsFeed</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <a href="/register-login" class="register-link">Register/Login</a>
+        </header>
+        
+        <h1>NewsFeed</h1>
+        <ul>
+            {% for post in newsfeed %}
+                <li>
+                    <h2>{{ post.post_title }}</h2>
+                    <p>Date Published: {{ post.date_published.strftime('%Y-%m-%d') }}</p>
+                    <p>{{ post.news_text }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2024 ASRJC Alumni Portal. All rights reserved.</p>
+        </footer>
+    </div>   
+</body>
+</html>

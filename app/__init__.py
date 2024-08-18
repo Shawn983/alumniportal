@@ -1,18 +1,19 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from .config import Config
-
-db = SQLAlchemy()
+from .database import db
+from .routes import main
+from .config import Config  # Import Config
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__,template_folder='templates')
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://default:kFfMWt6Zc1oX@ep-square-scene-a1p3btq7-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require'  
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # Load configuration from config.py
     app.config.from_object(Config)
-    
+
     db.init_app(app)
 
     with app.app_context():
-        from .routes import main  # Assuming 'main' is the blueprint in routes.py
-        app.register_blueprint(main)
-        db.create_all()  # Creates database tables from SQLAlchemy models if they don't exist
+        db.create_all()  # Create database tables for our data models
 
+    app.register_blueprint(main)
     return app

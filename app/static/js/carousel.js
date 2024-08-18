@@ -1,3 +1,4 @@
+// carousel.js for automatic photos with timing
 let slideIndex = 1;  // Start from the first slide
 let slides = document.getElementsByClassName("carousel-slide")[0].children;
 let slideInterval;
@@ -23,7 +24,7 @@ function plusSlides(n) {
 
 function startCarousel() {
     showSlides(slideIndex); // Show the initial slide
-    slideInterval = setInterval(function() { plusSlides(1) }, 7000); // Start the automatic slideshow
+    slideInterval = setInterval(function() { plusSlides(1) }, 7000); // Start automatic slideshow
 }
 
 startCarousel(); // Initialize the carousel
