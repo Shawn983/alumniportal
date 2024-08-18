@@ -9,9 +9,9 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def home():
     current_time = datetime.now()
-    one_month_ago = current_time - timedelta(days=30)
+    six_months_ago = current_time - timedelta(days=180)
     upcoming_events = Event.query.filter(Event.event_date >= current_time).order_by(Event.event_date.asc()).all()
-    newsfeed = Newsfeed.query.filter(Newsfeed.date_published >= one_month_ago).order_by(Newsfeed.date_published.desc()).all()
+    newsfeed = Newsfeed.query.filter(Newsfeed.date_published >= six_months_ago).order_by(Newsfeed.date_published.desc()).all()
     return render_template('index.html', upcoming_events=upcoming_events, newsfeed=newsfeed)
 
 @main.route('/api/profile', methods=['GET'])
