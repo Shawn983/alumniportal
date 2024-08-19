@@ -5,15 +5,15 @@ File Directory:
 
 app|-->
 
-  __init__.py|--> 
+  __init__.py
   
-  config.py|-->
+  config.py
   
-  routes.py|-->
+  routes.py
   
-  database.py|-->
+  database.py
   
-  models.py|-->
+  models.py
   
   pwd_hashing.py|-->
   
