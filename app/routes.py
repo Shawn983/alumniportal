@@ -4,7 +4,6 @@ import bcrypt
 from .models import Event, Profile, Alumni, Newsfeed, CollaborationRequest
 from datetime import datetime, timedelta
 from . import db
-import os
 
 main = Blueprint('main', __name__)
 #routes for website
