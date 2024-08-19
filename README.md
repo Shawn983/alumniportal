@@ -15,7 +15,7 @@ app|-->
   
     models.py
   
-    pwd_hashing.py|-->
+    pwd_hashing.py
   
   templates|-->
   
@@ -32,6 +32,7 @@ app|-->
     register-login.html
 
   static |-->
+  
     style.css
     
     images
@@ -46,6 +47,10 @@ app|-->
       carousel.js
       
       profile.js
+
+run.py
+.json
+requirements.txt
       
     
     
