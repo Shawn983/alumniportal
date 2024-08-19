@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, render_template, jsonify, request, session, redirect, url_for, current_app
+from flask import Blueprint, render_template, jsonify, request, session, redirect, url_for, current_app, send_from_directory
 import bcrypt
 from .models import Event, Profile, Alumni, Newsfeed, CollaborationRequest
 from datetime import datetime, timedelta
@@ -7,6 +7,7 @@ from . import db
 
 main = Blueprint('main', __name__)
 #routes for website
+@main.route('/')
 def home():
     current_time = datetime.now()
     six_months_ago = current_time - timedelta(days=180)
