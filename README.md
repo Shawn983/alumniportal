@@ -10,7 +10,10 @@ app
             carousel.js
             profile.js
         images
-            (photo gallery)
+            (system images)
+        
+        gallery
+            (website images)
 
     templates
         alumni-directory.html
