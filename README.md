@@ -4,7 +4,7 @@ The Alumni Management System is a dynamic web application designed to connect an
 File Directory:
 
 app|-->
-  __init__.py|-->
+  __init__.py|--> 
   config.py|-->
   routes.py|-->
   database.py|-->
