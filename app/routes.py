@@ -1,3 +1,4 @@
+import os
 from flask import Blueprint, render_template, jsonify, request, session, redirect, url_for, current_app
 import bcrypt
 from .models import Event, Profile, Alumni, Newsfeed, CollaborationRequest
@@ -7,16 +8,20 @@ import os
 
 main = Blueprint('main', __name__)
 #routes for website
-@main.route('/')
 def home():
     current_time = datetime.now()
     six_months_ago = current_time - timedelta(days=180)
-    image_folder = os.path.join('static', 'gallery')
-    images = [os.path.join('/static/gallery', file) for file in os.listdir(image_folder)
-              if file.endswith((".png", ".jpg", ".jpeg"))]
     upcoming_events = Event.query.filter(Event.event_date >= current_time).order_by(Event.event_date.asc()).all()
     newsfeed = Newsfeed.query.filter(Newsfeed.date_published >= six_months_ago).order_by(Newsfeed.date_published.desc()).all()
-    return render_template('index.html', images=images, upcoming_events=upcoming_events, newsfeed=newsfeed)
+
+    # Ensure the path to the gallery is correctly defined
+    image_folder = os.path.join(current_app.root_path, 'static', 'gallery')
+    try:
+        images = [os.path.join('/static/gallery', file) for file in os.listdir(image_folder)]
+    except FileNotFoundError:
+        images = []  # Handle the case where the directory is not found
+
+    return render_template('index.html', upcoming_events=upcoming_events, newsfeed=newsfeed, images=images)
 
 @main.route('/api/profile', methods=['GET'])
 def get_profile():
