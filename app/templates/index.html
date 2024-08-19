@@ -29,15 +29,14 @@
                 <h2>Photo Gallery</h2>
                 <div class="carousel">
                     <div class="carousel-slide">
-                        <img src="/static/images/photo1.jpg" alt="Event 1">
-                        <img src="/static/images/photo2.png" alt="Event 2">
-                        <img src="/static/images/photo3.jpg" alt="Event 3">
-                        <img src="/static/images/photo4.jpg" alt="Event 4">
+                        {% for img in images %}
+                        <img src="{{ img }}" alt="Gallery Image">
+                        {% endfor %}
                     </div>
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
-                
+                                
             </section>
 
             <section class="event-calendar">
