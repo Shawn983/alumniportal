@@ -26,6 +26,7 @@ This project was immensely educational, covering several aspects:
 - **Full-stack Integration:** Understanding the intricate dance between the frontend and backend.
 - **Debugging and Tools:** Utilizing local and online debugging tools to resolve issues effectively both on the local server as well as on the online server. These include browser inspeciton tools, server logs and powershell debugs as well as error handling in the code. 
 - **JavaScript Dynamics:** Leveraging JavaScript to manage dynamic content and enhance user interaction.
+- **Modular Programming Technique:** I also learnt how to implement a modular architecture for programming that significantly assists in making it easier to understand, debug and enhance the code.
 
 ## What's next for ASRJC Alumni Portal
 Future enhancements for the portal include:
@@ -35,6 +36,7 @@ Future enhancements for the portal include:
 
 
 File Directory
+
 app
 
     static
@@ -70,5 +72,7 @@ app
     routes.py
    
 requirements.txt
+
 run.py
+
 README.md
