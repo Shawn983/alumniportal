@@ -171,6 +171,7 @@ def submit_collab_request():
     try:
         new_request = CollaborationRequest(
             requestor_full_name=data.get('requestorName'),
+            requestor_contact_number=data.get('requestorContactNumber'),
             requestor_email=data.get('requestorEmail'),
             description=data.get('description'),
             requested_person_full_name=data.get('alumniName'),
